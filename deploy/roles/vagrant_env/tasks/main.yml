@@ -1,0 +1,10 @@
+---
+
+- name: Copy dot file templates
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ vagrant_user_home_dir }}/.{{ item }}"
+    owner: "{{ vagrant_user_name }}"
+    group: "{{ vagrant_group_name }}"
+  with_items:
+    - bash_aliases
