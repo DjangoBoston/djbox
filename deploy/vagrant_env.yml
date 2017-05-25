@@ -1,5 +1,0 @@
-- hosts: all
-  become: yes
-  become_method: "sudo"
-  roles:
-    - vagrant_env
