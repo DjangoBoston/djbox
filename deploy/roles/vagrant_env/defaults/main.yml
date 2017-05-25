@@ -1,4 +1,0 @@
----
-vagrant_user_name: ubuntu
-vagrant_group_name: ubuntu
-vagrant_user_home_dir: /home/ubuntu
