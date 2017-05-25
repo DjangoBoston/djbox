@@ -1,0 +1,21 @@
+---
+- hosts: all
+  become: yes
+  become_method: "sudo"
+  gather_facts: true
+  vars:
+    # Specify top level vars. foo: "bar" is not used by anything, just here to show you can put vars here
+    foo: "bar"
+  tasks:
+    - name: update apt cache
+      apt: update_cache=yes
+  roles:
+    - python
+    - developer_base
+    # Remarked out because we set a dependency in djsite/meta/main.yml
+    # so that the role 'appuser' is run before the 'djsite' role is run
+    # But we leave it commented out here for reference. 
+    #- role: appuser
+    #  app_user_name: "djsite"
+    #  app_group_name: "djsite"
+    - djsite

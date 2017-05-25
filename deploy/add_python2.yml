@@ -1,0 +1,16 @@
+---
+#
+# Ansible requires Python 2 for gathering facts
+# TODO: Review the following Gist and conversation to see if this playbook should be updated
+#
+# See:
+#     https://gist.github.com/gwillem/4ba393dceb55e5ae276a87300f6b8e6f
+#
+- name: Add missing python2 prerequisite
+  hosts: all
+  become: yes
+  become_method: "sudo"
+  gather_facts: no
+  tasks:
+    - name: Install Python 2
+      raw: apt-get -y install python-simplejson

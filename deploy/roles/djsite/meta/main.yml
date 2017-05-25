@@ -1,0 +1,4 @@
+---
+# Here is another way to run a role, via dependencies
+dependencies:
+  - { role: appuser, app_user_name: "djsite", app_group_name: "djsite" }

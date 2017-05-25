@@ -1,0 +1,28 @@
+---
+
+# Create virtualenv
+- name: Create djsite virtualenv and packages
+  pip:
+    requirements: "{{ djsite_app_dir }}/requirements.txt"
+    virtualenv: "/home/djsite/venvs/djsite"
+    virtualenv_python: python3.5
+
+- name: Set ownership for djsite home
+  file: 
+    path: "{{ djsite_home_dir }}"
+    state: directory
+    # Set recursive if we need to set/fix ownership of all the user's folders/files
+    #recurse: yes
+    owner: "{{ djsite_user_name }}"
+    group: "{{ djsite_group_name }}"
+
+- name: Copy dot file templates
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ djsite_home_dir }}/.{{ item }}"
+    owner: "{{ djsite_user_name }}"
+    group: "{{ djsite_group_name }}"
+  with_items:
+    - bash_aliases
+    - bash_profile
+    - bashrc

@@ -1,0 +1,24 @@
+---
+- name: Update APT
+  apt: update_cache=yes cache_valid_time=3600
+  tags: ['python', 'python:packages']
+
+- name: Install developer base packages
+  apt: name={{ item }} state=latest
+  with_items:
+   - python
+   - python-software-properties
+  tags: ['python', 'python:packages']
+
+# See: https://pip.pypa.io/en/stable/installing/#installing-with-get-pip-py
+- name: Get get-pip.py for installing pip
+  get_url: url='https://bootstrap.pypa.io/get-pip.py' dest='/opt' force=no
+  tags: ['python', 'python:packages']
+
+- name: Install global pip
+  command: 'python /opt/get-pip.py'
+  tags: ['python', 'python:packages']
+
+- name: Install global virtualenv
+  pip: name=virtualenv
+  tags: ['python', 'python:packages']

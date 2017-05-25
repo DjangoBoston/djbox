@@ -1,0 +1,22 @@
+---
+
+- name: "Create the group: {{ app_group_name }}"
+  group:
+    name: "{{ app_group_name}}"
+    gid: "{{ app_group_id }}"
+    state: present
+  tags: ['appuser', 'appuser:install']
+
+- name: "Create the user {{ app_user_name }}"
+  user:
+    name: "{{ app_user_name }}"
+    uid: "{{ app_user_id }}"
+    generate_ssh_key: yes
+    ssh_key_bits: 2048
+    ssh_key_file: .ssh/id_rsa
+    comment: "{{ app_user_comment_line }}"
+    group: "{{ app_group_name }}"
+    append: yes
+    shell: /bin/bash
+  tags: ['appuser', 'appuser:install']
+

@@ -1,0 +1,6 @@
+---
+app_user_name: appuser
+app_group_name: appuser
+app_user_comment_line: "App user generated with ansible"
+app_user_id: 1001
+app_group_id: 1001

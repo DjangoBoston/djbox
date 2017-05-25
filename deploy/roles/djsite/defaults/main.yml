@@ -1,0 +1,7 @@
+
+djsite_home_dir: "/home/djsite"
+djsite_user_name: "djsite"
+djsite_group_name: "djsite"
+
+djsite_app_dir: "{{ djsite_home_dir }}/app/djsite"
+djsite_www_dir: "{{ djsite_home_dir }}/www"

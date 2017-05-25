@@ -1,0 +1,14 @@
+---
+- name: Update APT
+  apt: update_cache=yes cache_valid_time=3600
+  tags: ['developer_base', 'developer_base:packages']
+
+- name: Install developer base packages
+  apt: name={{ item }} state=latest
+  with_items:
+   - curl
+   - git
+   - make
+   - vim
+  tags: ['developer_base', 'developer_base:packages']
+

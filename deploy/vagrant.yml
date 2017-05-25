@@ -1,0 +1,4 @@
+---
+- include: add_python2.yml
+- include: djbox.yml
+- include: vagrant_env.yml
